@@ -45,31 +45,33 @@
 
         <fieldset>
           <label for="query_type">Query Type <span>*</span></label>
-          <div class="query_container">
-            <input
-              type="radio"
-              name="query_type"
-              value="General Enquiry"
-              id="general_enquiry"
-            />
-            <label for="general_enquiry">General Enquiry</label>
-          </div>
+          <div class="query_container_wrapper">
+            <div class="query_container">
+              <input
+                type="radio"
+                name="query_type"
+                value="General Enquiry"
+                id="general_enquiry"
+              />
+              <label for="general_enquiry">General Enquiry</label>
+            </div>
 
-          <div class="query_container">
-            <input
-              type="radio"
-              name="query_type"
-              value="Support Request"
-              id="support_request"
-            />
-            <label for="support_request">Support Request</label>
+            <div class="query_container">
+              <input
+                type="radio"
+                name="query_type"
+                value="Support Request"
+                id="support_request"
+              />
+              <label for="support_request">Support Request</label>
+            </div>
           </div>
           <p class="error">Please select a query</p>
         </fieldset>
 
         <div class="input_container">
           <label for="message">Message<span>*</span></label>
-          <textarea id="message" rows="15" cols="10"></textarea>
+          <textarea id="message"></textarea>
           <p class="error">This field is required</p>
         </div>
 
@@ -93,10 +95,12 @@
     <div class="attribution">
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-      Coded by <a href="#">Your Name Here</a>.
+      Coded by <a href="#">Jorn Kremers</a>.
     </div>
   </body>
 </html>
 <!-- 
 hsl(0, 0%, 100%) hsl(186, 15%, 59%) hsl(187, 24%, 22%) hsl(148, 38%, 91%)
-hsl(169, 82%, 27%) hsl(0, 66%, 56%) -->
+hsl(169, 82%, 27%) hsl(0, 66%, 56%)
+ rows="15" cols="10"
+-->
