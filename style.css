@@ -36,7 +36,7 @@ form {
       width: 100%;
       padding: 1rem;
       border-radius: 8px;
-      border: 1px solid hsl(186, 15%, 59%);
+      border: 1px solid hsl(161, 14%, 66%);
       box-sizing: border-box;
 
       &:focus {
@@ -59,20 +59,23 @@ form {
     margin-top: 0.5rem;
 
     .query_container {
-      padding: 1rem;
+      padding: 0.75rem 1rem;
       border: 1px solid hsl(186, 15%, 59%);
       border-radius: 8px;
       display: flex;
       align-items: center;
 
       input[type="radio"] {
-        width: 20px;
-        height: 20px;
+        width: 15px;
+        height: 15px;
         margin: 0 0.75rem 0 0;
 
         &:checked {
           appearance: none;
           background-image: url("./assets/images/icon-radio-selected.svg");
+          background-size: 15px 15px;
+          height: 15px;
+          width: 15px;
         }
       }
 
@@ -82,14 +85,11 @@ form {
     }
   }
 
-  input[type="checkbox"] {
-    height: 13px;
-    width: 13px;
-  }
-
-  input[type="checkbox"]:checked {
-    appearance: none;
+  input[type="checkbox"]:checked::before {
+    content: "";
     background-image: url("./assets/images/icon-checkbox-check.svg");
+    background-size: 13px 13px;
+    display: inline-block;
     height: 13px;
     width: 13px;
   }
@@ -97,7 +97,7 @@ form {
   textarea {
     padding: 1rem;
     border-radius: 8px;
-    border: 1px solid hsl(169, 82%, 27%);
+    border: 1px solid hsl(161, 14%, 66%);
     width: 100%;
     resize: none;
     box-sizing: border-box;
