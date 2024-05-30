@@ -54,6 +54,7 @@
                 name="query_type"
                 value="General Enquiry"
                 id="general_enquiry"
+                class="query_type"
               />
               <label for="general_enquiry">General Enquiry</label>
             </div>
@@ -64,6 +65,7 @@
                 name="query_type"
                 value="Support Request"
                 id="support_request"
+                class="query_type"
               />
               <label for="support_request">Support Request</label>
             </div>
@@ -78,17 +80,23 @@
         </div>
 
         <div class="consent_check">
-          <input type="checkbox" name="consent" id="consent" />
-          <label for="consent"
-            >I consent to being contacted by the team <span>*</span></label
-          >
-
+          <div class="consent_wrapper">
+            <input
+              type="checkbox"
+              name="consent"
+              id="consent"
+              class="consent"
+            />
+            <label for="consent"
+              >I consent to being contacted by the team <span>*</span></label
+            >
+          </div>
           <p class="error_msg">
             To submit this form, please consent to being contacted.
           </p>
         </div>
         <button type="submit">Submit</button>
-        <div class="sucess_toast">
+        <div class="succes_toast">
           <p>Message Sent!</p>
           <p>Thanks for completing the form. We'll be in touch soon!</p>
         </div>

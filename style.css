@@ -84,6 +84,12 @@ form {
     margin: 0;
   }
 
+  fieldset.error {
+    .error_msg {
+      display: block;
+    }
+  }
+
   .query_container_wrapper {
     display: flex;
     flex-direction: column;
@@ -120,15 +126,6 @@ form {
         background-color: hsl(148, 38%, 91%);
       }
     }
-  }
-
-  input[type="checkbox"]:checked::before {
-    content: "";
-    background-image: url("./assets/images/icon-checkbox-check.svg");
-    background-size: 13px 13px;
-    display: inline-block;
-    height: 13px;
-    width: 13px;
   }
 
   textarea {
@@ -187,13 +184,42 @@ form {
   }
 
   .consent_check {
+    padding-left: 0.5rem;
+
     label {
       cursor: pointer;
+    }
+
+    .consent_wrapper {
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      input[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+      }
+
+      input[type="checkbox"]:checked::before {
+        content: "";
+        background-image: url("./assets/images/icon-checkbox-check.svg");
+        background-size: 15px 15px;
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+      }
+    }
+
+    &.error {
+      .error_msg {
+        display: block;
+      }
     }
   }
 }
 
-.sucess_toast {
+.succes_toast {
   display: none;
   padding: 1.5rem;
   border-radius: 10px;
@@ -221,6 +247,10 @@ form {
   p:last-of-type {
     opacity: 0.8;
     margin-bottom: 0;
+  }
+
+  &.show {
+    display: block;
   }
 }
 

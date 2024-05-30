@@ -1,7 +1,9 @@
 let email = "";
 let firstName = "";
 let lastName = "";
+let queryType = "";
 let message = "";
+let consent = false;
 
 
 const checkEmailIsValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -10,10 +12,24 @@ const checkEmailIsValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 function validateForm(event) {
     event.preventDefault();
 
+    const toast = document.querySelector(".succes_toast").classList;
+
     const emailIsValid = validateEmail();
     const firstNameIsValid = validateFirstName();
     const lastNameIsValid = validateLastName();
     const messageIsValid = validateMessage();
+    const queryIsSelected = validateQuery();
+    const consentIsGiven = validateConsent();
+
+    if (emailIsValid && firstNameIsValid && lastNameIsValid && messageIsValid && queryIsSelected && consentIsGiven) {
+        toast.add("show");
+
+        setTimeout(() => {
+            toast.remove("show")
+        }, "4000"
+        )
+    }
+
 
 }
 
@@ -43,18 +59,6 @@ function validateLastName() {
     }
 }
 
-function validateMessage() {
-    const element = document.querySelector(".message").classList;
-
-    if (message == "") {
-        element.add("error");
-        return false;
-    }
-    else {
-        element.remove("error");
-        return true;
-    }
-}
 
 function validateEmail() {
 
@@ -79,6 +83,49 @@ function validateEmail() {
     }
 }
 
+function validateQuery() {
+    const element = document.querySelector("fieldset").classList;
+
+    if (queryType == "") {
+        element.add("error");
+        return false;
+    }
+    else {
+        element.remove("error");
+        return true;
+    }
+}
+
+
+function validateMessage() {
+    const element = document.querySelector(".message").classList;
+
+    if (message == "") {
+        element.add("error");
+        return false;
+    }
+    else {
+        element.remove("error");
+        return true;
+    }
+}
+
+function validateConsent() {
+
+    const element = document.querySelector(".consent_check").classList;
+
+    if (consent === false) {
+        element.add("error");
+        return false;
+    }
+    else {
+        element.remove("error");
+        return true;
+    }
+
+
+}
+
 
 const form = document.querySelector("form");
 form.addEventListener("submit", validateForm);
@@ -92,5 +139,13 @@ lastNameInput.addEventListener("input", (e) => lastName = e.target.value);
 const emailInput = document.querySelector(".email");
 emailInput.addEventListener("input", (e) => email = e.target.value);
 
+const queryInputs = document.querySelectorAll(".query_type");
+queryInputs.forEach((query) => {
+    query.addEventListener("click", (e) => queryType = e.target.value);
+})
+
 const messageInput = document.querySelector(".message");
 messageInput.addEventListener("input", (e) => message = e.target.value);
+
+const consentCheck = document.querySelector(".consent");
+consentCheck.addEventListener("click", () => consent = !consent);
