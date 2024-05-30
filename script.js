@@ -1,3 +1,5 @@
+// variables for storing user input and query selectors
+
 let email = "";
 let firstName = "";
 let lastName = "";
@@ -5,31 +7,20 @@ let queryType = "";
 let message = "";
 let consent = false;
 
+const form = document.querySelector("form");
+const firstNameInput = document.querySelector(".fname");
+const lastNameInput = document.querySelector(".lname");
+const emailInput = document.querySelector(".email");
+const queryInputs = document.querySelectorAll(".query_type");
+const messageInput = document.querySelector(".message");
+const consentCheck = document.querySelector(".consent");
+
+
+// Functions 
+
 const checkEmailIsValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-function validateForm(event) {
-    event.preventDefault();
-
-    const toast = document.querySelector(".succes_toast").classList;
-
-    const emailIsValid = validateEmail();
-    const firstNameIsValid = validateFirstName();
-    const lastNameIsValid = validateLastName();
-    const messageIsValid = validateMessage();
-    const queryIsSelected = validateQuery();
-    const consentIsGiven = validateConsent();
-
-    if (emailIsValid && firstNameIsValid && lastNameIsValid && messageIsValid && queryIsSelected && consentIsGiven) {
-        toast.add("show");
-
-        setTimeout(() => {
-            toast.remove("show")
-        }, "4000"
-        )
-    }
-}
-
-function validateFirstName() {
+const validateFirstName = function () {
     const element = document.querySelector(".fname").classList;
 
     if (firstName == "") {
@@ -42,7 +33,7 @@ function validateFirstName() {
     }
 }
 
-function validateLastName() {
+const validateLastName = function () {
     const element = document.querySelector(".lname").classList;
 
     if (lastName == "") {
@@ -55,7 +46,7 @@ function validateLastName() {
     }
 }
 
-function validateEmail() {
+const validateEmail = function () {
 
     const container = document.querySelector(".email").classList;
     const textField = document.querySelector(".error_msg_email");
@@ -78,7 +69,7 @@ function validateEmail() {
     }
 }
 
-function validateQuery() {
+const validateQuery = function () {
     const element = document.querySelector("fieldset").classList;
 
     if (queryType == "") {
@@ -91,7 +82,7 @@ function validateQuery() {
     }
 }
 
-function setSelectedQuery(value, index) {
+const setSelectedQuery = function (value, index) {
     queryType = value;
 
     const queryInputs = document.querySelectorAll(".query_container");
@@ -106,7 +97,7 @@ function setSelectedQuery(value, index) {
     }
 }
 
-function validateMessage() {
+const validateMessage = function () {
     const element = document.querySelector(".message").classList;
 
     if (message == "") {
@@ -119,7 +110,7 @@ function validateMessage() {
     }
 }
 
-function validateConsent() {
+const validateConsent = function () {
 
     const element = document.querySelector(".consent_check").classList;
 
@@ -133,26 +124,38 @@ function validateConsent() {
     }
 }
 
+const validateForm = function (event) {
+    event.preventDefault();
 
-const form = document.querySelector("form");
+    const toast = document.querySelector(".succes_toast").classList;
+
+    const emailIsValid = validateEmail();
+    const firstNameIsValid = validateFirstName();
+    const lastNameIsValid = validateLastName();
+    const messageIsValid = validateMessage();
+    const queryIsSelected = validateQuery();
+    const consentIsGiven = validateConsent();
+
+    if (emailIsValid && firstNameIsValid && lastNameIsValid && messageIsValid && queryIsSelected && consentIsGiven) {
+        toast.add("show");
+
+        setTimeout(() => {
+            toast.remove("show")
+        }, "6000"
+        );
+    }
+}
+
+// Event listeners
+
 form.addEventListener("submit", validateForm);
-
-const firstNameInput = document.querySelector(".fname");
 firstNameInput.addEventListener("input", (e) => firstName = e.target.value);
-
-const lastNameInput = document.querySelector(".lname");
 lastNameInput.addEventListener("input", (e) => lastName = e.target.value);
-
-const emailInput = document.querySelector(".email");
 emailInput.addEventListener("input", (e) => email = e.target.value);
 
-const queryInputs = document.querySelectorAll(".query_type");
 queryInputs.forEach((query, index) => {
     query.addEventListener("click", (e) => setSelectedQuery(e.target.value, index));
-})
+});
 
-const messageInput = document.querySelector(".message");
 messageInput.addEventListener("input", (e) => message = e.target.value);
-
-const consentCheck = document.querySelector(".consent");
 consentCheck.addEventListener("click", () => consent = !consent);

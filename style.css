@@ -277,6 +277,7 @@ form {
 }
 
 .attribution {
+  margin-bottom: 0.5rem;
   font-size: 11px;
   text-align: center;
 }
