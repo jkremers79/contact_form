@@ -12,6 +12,9 @@
       href="./assets/images/favicon-32x32.png"
     />
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <title>Frontend Mentor | Contact form</title>
 
     <link rel="stylesheet" href="./style.css" type="text/css" />
@@ -23,24 +26,23 @@
         <h1>Contact Us</h1>
 
         <div class="full_name_container">
-          <div class="input_container">
+          <div class="input_container fname">
             <label for="fname">First Name<span>*</span></label>
             <input type="text" id="fname" />
-            <p class="error">This field is required</p>
+            <p class="error_msg">This field is required</p>
           </div>
 
-          <div class="input_container">
+          <div class="input_container lname">
             <label for="lname">Last Name<span>*</span></label>
             <input type="text" id="lname" />
-            <p class="error">This field is required</p>
+            <p class="error_msg">This field is required</p>
           </div>
         </div>
 
-        <div class="input_container">
+        <div class="input_container email">
           <label for="email">Email Address<span>*</span></label>
           <input type="text" id="email" />
-          <p class="error">Please enter a valid email address</p>
-          <p class="error">This field is required</p>
+          <p class="error_msg_email"></p>
         </div>
 
         <fieldset>
@@ -66,29 +68,30 @@
               <label for="support_request">Support Request</label>
             </div>
           </div>
-          <p class="error">Please select a query</p>
+          <p class="error_msg">Please select a query</p>
         </fieldset>
 
-        <div class="input_container">
+        <div class="input_container message">
           <label for="message">Message<span>*</span></label>
           <textarea id="message"></textarea>
-          <p class="error">This field is required</p>
+          <p class="error_msg">This field is required</p>
         </div>
 
-        <div>
+        <div class="consent_check">
           <input type="checkbox" name="consent" id="consent" />
           <label for="consent"
             >I consent to being contacted by the team <span>*</span></label
           >
 
-          <p class="error">
+          <p class="error_msg">
             To submit this form, please consent to being contacted.
           </p>
         </div>
-        <button>Submit</button>
-
-        <!-- Message Sent! Thanks for completing the form. We'll be in touch
-        soon! -->
+        <button type="submit">Submit</button>
+        <div class="sucess_toast">
+          <p>Message Sent!</p>
+          <p>Thanks for completing the form. We'll be in touch soon!</p>
+        </div>
       </form>
     </main>
 

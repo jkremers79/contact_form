@@ -1,8 +1,26 @@
+@font-face {
+  font-family: "Karla Ragular";
+  src: url("./assets/fonts/static/Karla-Regular.ttf") format("truetype");
+}
+
 body {
+  font-family: "Karla Regular", sans-serif;
+  font-weight: 200;
   margin: 0;
   padding: 0;
   background-color: hsl(148, 38%, 91%);
   color: hsl(187, 24%, 22%);
+}
+
+input {
+  font-family: "Karla Regular", sans-serif;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+button {
+  font-family: "Karla Regular", sans-serif;
+  font-weight: 600;
 }
 
 main {
@@ -11,14 +29,14 @@ main {
 }
 
 form {
-  /* max-width: 800px; */
-  margin: 2rem 1rem;
+  margin: 6rem 1rem 2rem 1rem;
   background-color: hsl(0, 0%, 100%);
   padding: 1.5rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
 
   .full_name_container {
     display: flex;
@@ -44,6 +62,20 @@ form {
         border: 1px solid hsl(169, 82%, 27%);
       }
     }
+
+    &.error {
+      input[type="text"] {
+        border: 1px solid hsl(0, 66%, 56%);
+      }
+
+      textarea {
+        border: 1px solid hsl(0, 66%, 56%);
+      }
+
+      .error_msg {
+        display: block;
+      }
+    }
   }
 
   fieldset {
@@ -64,6 +96,11 @@ form {
       border-radius: 8px;
       display: flex;
       align-items: center;
+      cursor: pointer;
+
+      label {
+        cursor: pointer;
+      }
 
       input[type="radio"] {
         width: 15px;
@@ -108,6 +145,10 @@ form {
       outline: none;
       border: 1px solid hsl(169, 82%, 27%);
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   label > span {
@@ -118,20 +159,68 @@ form {
     font-size: 0.75rem;
   }
 
-  .error {
+  .error_msg {
     display: none;
     font-size: 0.75rem;
     color: hsl(0, 66%, 56%);
     margin: 0;
   }
 
+  .error_msg_email {
+    font-size: 0.75rem;
+    color: hsl(0, 66%, 56%);
+    margin: 0;
+  }
+
   button {
-    padding: 1.5rem;
+    padding: 1rem;
     color: hsl(0, 0%, 100%);
     font-size: 1.25rem;
     border: none;
     border-radius: 8px;
     background-color: hsl(169, 82%, 27%);
+
+    &:hover {
+      background-color: hsl(171, 86%, 14%);
+      cursor: pointer;
+    }
+  }
+
+  .consent_check {
+    label {
+      cursor: pointer;
+    }
+  }
+}
+
+.sucess_toast {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: fit-content;
+  height: fit-content;
+  background-color: hsl(187, 24%, 22%);
+  color: hsl(0, 0%, 100%);
+  position: absolute;
+  top: -75px;
+  left: 175px;
+
+  p:first-of-type {
+    font-weight: bold;
+    margin-left: 0.5rem;
+    margin-top: 0;
+
+    &::before {
+      content: url(./assets/images/icon-success-check.svg);
+      position: relative;
+      right: 7px;
+      top: 5px;
+    }
+  }
+
+  p:last-of-type {
+    opacity: 0.8;
+    margin-bottom: 0;
   }
 }
 
