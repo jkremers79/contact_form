@@ -5,9 +5,7 @@ let queryType = "";
 let message = "";
 let consent = false;
 
-
 const checkEmailIsValid = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
 
 function validateForm(event) {
     event.preventDefault();
@@ -29,8 +27,6 @@ function validateForm(event) {
         }, "4000"
         )
     }
-
-
 }
 
 function validateFirstName() {
@@ -58,7 +54,6 @@ function validateLastName() {
         return true;
     }
 }
-
 
 function validateEmail() {
 
@@ -96,6 +91,20 @@ function validateQuery() {
     }
 }
 
+function setSelectedQuery(value, index) {
+    queryType = value;
+
+    const queryInputs = document.querySelectorAll(".query_container");
+
+    if (index === 0) {
+        queryInputs[0].classList.add("active");
+        queryInputs[1].classList.remove("active");
+    }
+    else {
+        queryInputs[0].classList.remove("active");
+        queryInputs[1].classList.add("active");
+    }
+}
 
 function validateMessage() {
     const element = document.querySelector(".message").classList;
@@ -122,8 +131,6 @@ function validateConsent() {
         element.remove("error");
         return true;
     }
-
-
 }
 
 
@@ -140,8 +147,8 @@ const emailInput = document.querySelector(".email");
 emailInput.addEventListener("input", (e) => email = e.target.value);
 
 const queryInputs = document.querySelectorAll(".query_type");
-queryInputs.forEach((query) => {
-    query.addEventListener("click", (e) => queryType = e.target.value);
+queryInputs.forEach((query, index) => {
+    query.addEventListener("click", (e) => setSelectedQuery(e.target.value, index));
 })
 
 const messageInput = document.querySelector(".message");
